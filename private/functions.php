@@ -8,7 +8,7 @@ function url_for($script_path) {
     return WWW_ROOT . $script_path;
 }
 
-function u($string="") {
+/*function u($string="") {
     return urlencode($string);
 }
 
@@ -18,6 +18,6 @@ function raw_u($string="") {
 
 function h($string="") {
     return htmlspecialchars($string);
-}
+}*/
 
 ?>
