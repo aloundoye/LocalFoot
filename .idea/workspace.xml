@@ -20,10 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32b60f72-84d0-4373-b122-8b147d0643cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private/shared/public_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/shared/public_header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -57,6 +55,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alassane Ndoye\PhpstormProjects\LocalFoot\public" />
+      <recent name="C:\Users\Alassane Ndoye\PhpstormProjects\LocalFoot\public\stylesheets" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -67,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600471514586</updated>
       <workItem from="1600471515776" duration="2508000" />
-      <workItem from="1600485839461" duration="3001000" />
+      <workItem from="1600485839461" duration="7087000" />
     </task>
     <task id="LOCAL-00001" summary="Rebase">
       <created>1600486645914</created>
@@ -83,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600486827153</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ajout de la fonction GUID">
+      <created>1600492606750</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1600492606750</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,7 +115,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Rebase" />
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="ajout de la fonction GUID" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout de la fonction GUID" />
   </component>
   <component name="WindowStateProjectService">
     <state x="448" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600479280664">
@@ -119,14 +131,24 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="507" y="66" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1600471545856" />
-    <state x="387" y="139" key="Vcs.Push.Dialog.v2" timestamp="1600486648183">
+    <state x="387" y="139" key="Vcs.Push.Dialog.v2" timestamp="1600492609526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="387" y="139" key="Vcs.Push.Dialog.v2/-1366.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1600486648183" />
+    <state x="387" y="139" key="Vcs.Push.Dialog.v2/-1366.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1600492609526" />
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1600471699286" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600486150799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1366.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1600486150799" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/private/shared/public_header.php</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
