@@ -9,7 +9,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="" class="m-0 btn btn-info fa-pull-right"><i class="fas fa-plus"></i> Ajouter une nouvelle produit</a>
+            <a href="<?php echo url_for('/admin/new.php') ?>" class="m-0 btn btn-info fa-pull-right"><i class="fas fa-plus"></i> Ajouter une nouvelle produit</a>
             <h6 class="m-0 font-weight-bold text-primary">Détails Terrains</h6>
         </div>
         <div class="card-body">
@@ -20,6 +20,7 @@
                         <th>Nom</th>
                         <th>Prix</th>
                         <th>Taille</th>
+                        <th>&nbsp;</th>
                     </tr>
                     </thead>
                     <tfoot>
@@ -27,6 +28,7 @@
                         <th>Nom</th>
                         <th>Prix</th>
                         <th>Taille</th>
+                        <th>&nbsp;</th>
                     </tr>
                     </tfoot>
                     <tbody>
@@ -34,6 +36,8 @@
                         <td>Tiger Nixon</td>
                         <td>$320,800</td>
                         <td>61</td>
+                        <td><a class="btn btn-outline-primary" href="<?php echo url_for('/admin/edit.php?id=' . h(u()));?>">Modifier</a>
+                        <a class="btn btn-outline-danger" href="<?php echo url_for('/admin/delete.php?id=' . h(u()));?>">Supprimer</a></td>
                     </tr>
                     </tbody>
                 </table>
