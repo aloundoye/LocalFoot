@@ -1,5 +1,8 @@
 <?php require_once('../../private/initialize.php');?>
 
+<?php
+$terrain_set = find_all_terrains();
+?>
 <?php $page_title = 'Terrains' ?>
 <?php include(SHARED_PATH . '/admin_header.php') ?>
 
@@ -32,13 +35,15 @@
                     </tr>
                     </tfoot>
                     <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>$320,800</td>
-                        <td>61</td>
-                        <td><a class="btn btn-outline-primary" href="<?php echo url_for('/admin/edit.php?id=' . h(u()));?>">Modifier</a>
-                        <a class="btn btn-outline-danger" href="<?php echo url_for('/admin/delete.php?id=' . h(u()));?>">Supprimer</a></td>
-                    </tr>
+                        <?php while ($terrain = mysqli_fetch_assoc($terrain_set)){?>
+                            <tr>
+                                <td><?php echo h($terrain['nom_terrain']); ?></td>
+                                <td><?php echo h($terrain['prix']); ?></td>
+                                <td><?php echo h($terrain['taille']); ?></td>
+                                <td><a class="btn btn-outline-primary" href="<?php echo url_for('/admin/edit.php?id=' . h(u($terrain['id'])));?>">Modifier</a>
+                                <a class="btn btn-outline-danger" href="<?php echo url_for('/admin/delete.php?id=' . h(u($terrain['id'])));?>">Supprimer</a></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

@@ -17,12 +17,8 @@ if (is_post_request()){
 <div class="container">
     <form action="" method="post">
         <div class="form-group">
-            <label for="taille">Taille</label>
-            <input type="text" class="form-control form-control-sm" id="taille" name="taille" placeholder="Entrer la taille du terrain">
-        </div>
-        <div class="form-group">
-            <label for="taille">Taille</label>
-            <input type="text" class="form-control form-control-sm" id="taille" name="taille" placeholder="Entrer la taille du terrain">
+            <label for="nom_terrain">Nom du terrain</label>
+            <input type="text" class="form-control form-control-sm" id="nom_terrain" name="nom_terrain" placeholder="Entrer le nom du terrain">
         </div>
         <div class="form-group">
             <label for="taille">Taille</label>
