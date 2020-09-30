@@ -19,6 +19,29 @@
     return $subject; //return an assoc. array
     }
 
+function update_terrain($terrain){
+    global $db;
+
+    $sql = "UPDATE terrain SET ";
+    $sql .= "nom_terrain='" . $terrain['nom_terrain'] . "', ";
+    $sql .= "description='" . $terrain['description'] . "', ";
+    $sql .= "prix='" . $terrain['prix'] . "', ";
+    $sql .= "taille='" . $terrain['taille'] . "' ";
+    $sql .= "WHERE id='" . $terrain['id'] . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    if($result) {
+        return true;
+    }else{
+        echo  mysqli_error($db);
+        db_disconnect($db);
+        exit();
+    }
+
+}
+
 function insert_terrain($id, $nom_terrain , $taille, $prix, $description){
     global  $db;
 
@@ -36,7 +59,7 @@ function insert_terrain($id, $nom_terrain , $taille, $prix, $description){
         return true;
     } else {
         echo mysqli_error($db);
-        db_disconnect();
+        db_disconnect($db);
         exit();
     }
 }
