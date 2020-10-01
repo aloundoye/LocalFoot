@@ -42,22 +42,40 @@ function update_terrain($terrain){
 
 }
 
-function insert_terrain($id, $nom_terrain , $taille, $prix, $description){
+function insert_terrain($terrain){
     global  $db;
 
     $sql = "INSERT INTO terrain ";
     $sql .= "(id, nom_terrain, taille, prix, description) ";
     $sql .= "VALUES (";
-    $sql .= "'" . $id . "',";
-    $sql .= "'" . $nom_terrain . "',";
-    $sql .= "'" . $taille . "',";
-    $sql .= "'" . $prix . "',";
-    $sql .= "'" . $description . "'";
+    $sql .= "'" . $terrain['id'] . "',";
+    $sql .= "'" . $terrain['nom_terrain'] . "',";
+    $sql .= "'" . $terrain['taille'] . "',";
+    $sql .= "'" . $terrain['prix'] . "',";
+    $sql .= "'" . $terrain['description'] . "'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
     if ($result){
         return true;
     } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit();
+    }
+}
+
+function delete_terrain($id) {
+    global $db;
+    $sql = "DELETE FROM terrain ";
+    $sql .= "WHERE id='" . $id . "' ";
+    $sql .= "LIMIT 1";
+    $result = mysqli_query($db, $sql);
+
+    //For DELETE statements, $result is true/false
+    if ($result){
+        return true;
+    } else {
+        //DELETE failed
         echo mysqli_error($db);
         db_disconnect($db);
         exit();

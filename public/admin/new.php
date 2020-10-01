@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         <label for="taille">Taille</label>
-        <input type="text" class="form-control form-control-sm" id="taille" name="taille" placeholder="Entrer la taille du terrain">
+        <input type="text" class="form-control form-control-sm" id="taille" name="taille" placeholder="Entrer la taille du terrain ex: 30x40">
     </div>
     <div class="form-group">
         <label for="description">Description</label>

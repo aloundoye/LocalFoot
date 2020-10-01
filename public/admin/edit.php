@@ -7,15 +7,9 @@ if (!isset($_GET['id'])){
 $id = $_GET['id'];
 
 if (is_post_request()){
-    $terrain = [];
-    $terrain['id'] = $id;
-    $terrain['nom_terrain'] = $_POST['nom_terrain'] ?? '';
-    $terrain['taille'] = $_POST['taille'] ?? '';
-    $terrain['description'] = $_POST['description'] ?? '';
-    $terrain['prix'] = $_POST['prix'] ?? '';
 
-    update_terrain($terrain);
-    redirect_to(url_for('/admin/index.php'));
+    del;
+    redirect_to(url_for('/admin/terrains.php'));
 
 } else{
     $terrain = find_terrain_by_id($id);
@@ -33,7 +27,7 @@ if (is_post_request()){
         </div>
         <div class="form-group">
             <label for="taille">Taille</label>
-            <input type="text" class="form-control form-control-sm" id="taille" name="taille" placeholder="Entrer la taille du terrain" value="<?php echo h($terrain['taille']);?>">
+            <input type="text" class="form-control form-control-sm" id="taille" name="taille" placeholder="Entrer la taille du terrain ex: 30x40" value="<?php echo h($terrain['taille']);?>">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
