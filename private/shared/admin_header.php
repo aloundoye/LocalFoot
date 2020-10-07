@@ -22,6 +22,7 @@ if(!isset($page_title)) { $page_title = 'Admin Area'; }
 
     <!-- Custom styles for this template-->
     <link href="../stylesheets/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../stylesheets/style_admin.css" rel="stylesheet">
 
 </head>
 

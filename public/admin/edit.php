@@ -7,9 +7,18 @@ if (!isset($_GET['id'])){
 $id = $_GET['id'];
 
 if (is_post_request()){
+    $terrain = [];
+    $terrain['nom_terrain'] = $_POST['nom_terrain'] ?? '';
+    $terrain['taille'] = $_POST['taille'] ?? '';
+    $terrain['description'] = $_POST['description'] ?? '';
+    $terrain['prix'] = $_POST['prix'] ?? '';
+    $result = update_terrain($terrain);
 
-    del;
-    redirect_to(url_for('/admin/terrains.php'));
+    if ($result===true){
+        redirect_to(url_for('/admin/show.php?id=' . $terrain['id']));
+    }else{
+        $errors = $result;
+    }
 
 } else{
     $terrain = find_terrain_by_id($id);
@@ -20,6 +29,7 @@ if (is_post_request()){
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Modifier Terrain</h1>
 <div class="container">
+    <?php echo display_errors($errors); ?>
     <form action="" method="post">
         <div class="form-group">
             <label for="nom_terrain">Nom du terrain</label>

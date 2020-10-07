@@ -3,8 +3,8 @@
 <?php
 $terrain_set = find_all_terrains();
 ?>
-<?php $page_title = 'Terrains' ?>
-<?php include(SHARED_PATH . '/admin_header.php') ?>
+<?php $page_title = 'Terrains' ;?>
+<?php include(SHARED_PATH . '/admin_header.php'); ?>
 
 
     <!-- Page Heading -->
@@ -37,7 +37,7 @@ $terrain_set = find_all_terrains();
                     <tbody>
                         <?php while ($terrain = mysqli_fetch_assoc($terrain_set)){?>
                             <tr>
-                                <td><?php echo h($terrain['nom_terrain']); ?></td>
+                                <td><a href="<?php echo url_for('/admin/show.php?id=' . htmlspecialchars(urlencode($terrain['id'])));?>"><?php echo h($terrain['nom_terrain']); ?></a></td>
                                 <td><?php echo h($terrain['prix']); ?></td>
                                 <td><?php echo h($terrain['taille']); ?></td>
                                 <td><a class="btn btn-outline-primary" href="<?php echo url_for('/admin/edit.php?id=' . h(u($terrain['id'])));?>">Modifier</a>

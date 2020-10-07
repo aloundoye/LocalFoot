@@ -57,4 +57,19 @@ function is_post_request(){
 function is_get_request(){
     return $_SERVER['REQUEST_METHOD'] == 'GET';
 }
+
+function display_errors($errors=array()) {
+    $output = '';
+    if(!empty($errors)) {
+        $output .= "<div class=\"errors\">";
+        $output .= "Veillez corriger les erreurs suivantes:";
+        $output .= "<ul>";
+        foreach($errors as $error) {
+            $output .= "<li>" . h($error) . "</li>";
+        }
+        $output .= "</ul>";
+        $output .= "</div>";
+    }
+    return $output;
+}
 ?>

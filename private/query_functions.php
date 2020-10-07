@@ -22,6 +22,11 @@
     function update_terrain($terrain){
         global $db;
 
+        $errors = validate_terrain($terrain);
+        if (!empty($errors)){
+            return $errors;
+        }
+
         $sql = "UPDATE terrain SET ";
         $sql .= "nom_terrain='" . mysqli_real_escape_string($db,$terrain['nom_terrain']) . "', ";
         $sql .= "description='" . mysqli_real_escape_string($db,$terrain['description']) . "', ";
@@ -44,6 +49,11 @@
 
     function insert_terrain($terrain){
         global  $db;
+
+        $errors = validate_terrain($terrain);
+        if (!empty($errors)){
+            return $errors;
+        }
 
         $sql = "INSERT INTO terrain ";
         $sql .= "(id, nom_terrain, taille, prix, description) ";
@@ -81,5 +91,22 @@
             exit();
         }
     }
+     function validate_terrain($terrain){
+        $errors = [];
 
+        if (is_blank($terrain['nom_terrain'])){
+            $errors[] = "Le nom du terrain ne peut pas être vide.";
+        }
+        if (is_blank($terrain['taille'])){
+            $errors[] = "La taille du terrain ne peut pas être vide.";
+        }
+        if (is_blank($terrain['prix'])){
+            $errors[] = "Le prix du terrain ne peut pas être vide.";
+        }
+        if (is_blank($terrain['description'])){
+            $errors[] = "La description du terrain ne peut pas être vide.";
+        }
+
+        return $errors;
+     }
 ?>
