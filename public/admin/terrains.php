@@ -46,6 +46,7 @@ $terrain_set = find_all_terrains();
                         <?php } ?>
                     </tbody>
                 </table>
+                    <?php mysqli_free_result($terrain_set);?>
             </div>
         </div>
     </div>

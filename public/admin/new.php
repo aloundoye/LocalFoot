@@ -54,11 +54,11 @@
         <label for="prix">Prix</label>
         <input type="text" value="<?php echo htmlspecialchars($terrain['prix']);?>" class="form-control form-control-sm" id="prix" name="prix" placeholder="Entrer le prix pour une reservation du terrain">
     </div>
-    <!--
+
     <div class="form-group">
         <label for="photo">Photo du terrain</label>
         <input type="file" class="form-control-file" name="photo" id="photo">
-    </div>-->
+    </div>
     <button type="submit" class="btn btn-primary">Ajouter</button>
     <a href="terrains.php" class="btn btn-danger">Annuler</a>
 </form>
