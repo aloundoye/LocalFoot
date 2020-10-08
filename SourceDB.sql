@@ -35,7 +35,7 @@ CREATE TABLE Client
         id VARCHAR (72) NOT NULL,
         tel varchar(10),
         email varchar(255) NOT NULL,
-        password VARCHAR(255) NOT NULL,
+        hashed_password VARCHAR(255) NOT NULL,
         PRIMARY KEY (id)
     );
 
@@ -47,7 +47,7 @@ CREATE TABLE Admin
         id VARCHAR (72) NOT NULL ,
         tel varchar(10),
         email varchar(255) NOT NULL,
-        password VARCHAR(255) NOT NULL,
+        hashed_password VARCHAR(255) NOT NULL,
         PRIMARY KEY (id)
     );
 
