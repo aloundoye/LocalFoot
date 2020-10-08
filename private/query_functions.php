@@ -14,9 +14,9 @@
         $sql .= "WHERE id='" . mysqli_real_escape_string($db, $id) . "'";
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
-        $subject = mysqli_fetch_assoc($result);
+        $terrain = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
-        return $subject; //return an assoc. array
+        return $terrain; //return an assoc. array
     }
 
     function update_terrain($terrain){

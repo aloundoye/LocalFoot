@@ -16,7 +16,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-                <img class="d-block img-fluid" src="<?php echo url_for('/images/Nouveau-terrain-bis-e1566481537914.jpg');?>" height="350" width="900" alt="First slide">
+                <img class="d-block img-fluid" src="<?php echo url_for('/images/Nouveau-terrain-bis-e1566481537914.jpg');?>" width="900" height="350" alt="First slide">
             </div>
             <div class="carousel-item">
                 <img class="d-block img-fluid" src="<?php echo url_for('/images/maxresdefault.jpg');?>"  width="900" height="350" alt="Second slide">
@@ -39,10 +39,10 @@
     <?php while ($terrain = mysqli_fetch_assoc($terrain_set)){?>
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="<?php echo url_for('/terrain.php?id=' . $terrain['id'])?>"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#"><?php echo $terrain['nom_terrain'];?></a>
+                        <a href="<?php echo url_for('/terrain.php?id=' . $terrain['id'])?>"><?php echo $terrain['nom_terrain'];?></a>
                     </h4>
                     <h5><?php echo $terrain['prix'];?> FCFA</h5>
                     <p class="card-text"><?php echo $terrain['description'];?></p>
