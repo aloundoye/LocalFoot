@@ -1,4 +1,7 @@
-<?php require_once('../../private/initialize.php');?>
+<?php
+require_once('../../private/initialize.php');
+require_admin_login();
+?>
 
 <?php $page_title = 'Terrains' ?>
 <?php include(SHARED_PATH . '/admin_header.php') ?>

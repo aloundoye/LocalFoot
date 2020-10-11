@@ -1,6 +1,7 @@
 <?php
 
 require_once('../../private/initialize.php');
+require_admin_login();
 $id = $_GET['id'] ?? '1';
 $terrain = find_terrain_by_id($id);
 

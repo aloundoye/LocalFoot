@@ -1,6 +1,7 @@
 <?php require_once('../../private/initialize.php');?>
 
 <?php
+require_admin_login();
 $terrain_set = find_all_terrains();
 ?>
 <?php $page_title = 'Terrains' ;?>

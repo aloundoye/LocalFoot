@@ -1,7 +1,8 @@
 <?php
 
     require_once('../../private/initialize.php');
-    if (is_post_request()){
+require_admin_login();
+if (is_post_request()){
         $terrain = [];
         $terrain['nom_terrain'] = $_POST['nom_terrain'] ?? '';
         $terrain['taille'] = $_POST['taille'] ?? '';

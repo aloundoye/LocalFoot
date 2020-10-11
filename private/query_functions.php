@@ -129,7 +129,17 @@ function find_admin_by_id($id){
     return $admin; //return an assoc. array
 }
 
-
+function find_admin_by_email($email){
+    global $db;
+    $sql = "SELECT * FROM admin ";
+    $sql .= "WHERE email='" . mysqli_real_escape_string($db, $email) . "' ";
+    $sql .= "LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $admin = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $admin; //return an assoc. array
+}
 
 function validate_admin($admin, $options=[]){
     $errors = [];
@@ -147,7 +157,7 @@ function validate_admin($admin, $options=[]){
         $errors[] = "L'email de l'administrateur ne peut pas être vide.";
     } elseif (!has_valid_email_format($admin['email'])){
         $errors[] = "L'email de l'administrateur est incorrect";
-    }elseif (!has_unique_email('client', $admin['email'], $admin['id'] ?? 0)){
+    }elseif (!has_unique_email('admin', $admin['email'], $admin['id'] ?? 0)){
         $errors[] = "L'email existe deja choisissez un autre";
     }
 
@@ -181,7 +191,7 @@ function update_admin($admin){
         return $errors;
     }
     $hashed_password = password_hash($admin['password'], PASSWORD_BCRYPT);
-    $sql = "UPDATE client SET ";
+    $sql = "UPDATE admin SET ";
     $sql .= "nom='" . mysqli_real_escape_string($db,$admin['nom']) . "', ";
     $sql .= "prenom='" . mysqli_real_escape_string($db,$admin['prenom']) . "', ";
     $sql .= "tel='" . mysqli_real_escape_string($db,$admin['tel']) . "', ";
@@ -214,7 +224,7 @@ function insert_admin($admin){
 
     $hashed_password = password_hash($admin['password'], PASSWORD_BCRYPT);
 
-    $sql = "INSERT INTO client ";
+    $sql = "INSERT INTO admin ";
     $sql .= "(id, nom, prenom, tel, email, password) ";
     $sql .= "VALUES (";
     $sql .= "'" . mysqli_real_escape_string($db, $admin['id']) . "',";
@@ -252,6 +262,7 @@ function find_client_by_id($id){
     mysqli_free_result($result);
     return $admin; //return an assoc. array
 }
+
 function find_client_by_email($email){
     global $db;
     $sql = "SELECT * FROM client ";
@@ -263,7 +274,6 @@ function find_client_by_email($email){
     mysqli_free_result($result);
     return $client; //return an assoc. array
 }
-
 
 
 function validate_client($client, $options=[]){

@@ -1,6 +1,7 @@
 <?php
     require_once('../../private/initialize.php');
-    $page_title = 'Supprimer Terrain';
+require_admin_login();
+$page_title = 'Supprimer Terrain';
     if (!isset($_GET['id'])){
         redirect_to(url_for('/admin/index.php'));
     }

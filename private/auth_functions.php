@@ -5,16 +5,16 @@
   // Renerating the ID protects the admin from session fixation.
     session_regenerate_id();
     $_SESSION['admin_id'] = $admin['id'];
-    $_SESSION['last_login'] = time();
-    $_SESSION['email'] = $admin['email'];
+    $_SESSION['admin_last_login'] = time();
+    $_SESSION['admin_email'] = $admin['email'];
     return true;
   }
 
   // Performs all actions necessary to log out an admin
   function log_out_admin() {
     unset($_SESSION['admin_id']);
-    unset($_SESSION['last_login']);
-    unset($_SESSION['email']);
+    unset($_SESSION['admin_last_login']);
+    unset($_SESSION['admin_email']);
     // session_destroy(); // optional: destroys the whole session
     return true;
   }

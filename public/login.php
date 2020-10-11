@@ -12,16 +12,16 @@ if(is_post_request()) {
 
 // Validations
     if (is_blank($email)) {
-        $errors[] = "Email cannot be blank.";
+        $errors[] = "L'e-mail ne peut pas être vide.";
     }
     if (is_blank($password)) {
-        $errors[] = "Password cannot be blank.";
+        $errors[] = "Le mot de passe ne peut pas être vide.";
     }
 
 // if there were no errors, try to login
     if (empty($errors)) {
         // Using one variable ensures that msg is the same
-        $login_failure_msg = "Log in was unsuccessful.";
+        $login_failure_msg = "La connexion a échoué.";
 
         $client = find_client_by_email($email);
         if ($client) {
@@ -37,7 +37,7 @@ if(is_post_request()) {
 
         } else {
             // no username found
-            $errors[] = "Compte non trouve";
+            $errors[] = "Compte non trouvé";
         }
 
     }

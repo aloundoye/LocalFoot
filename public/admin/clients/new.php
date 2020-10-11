@@ -1,7 +1,7 @@
 <?php
     require_once ('../../../private/initialize.php');
-
-    if (is_post_request()){
+require_admin_login();
+if (is_post_request()){
         $client = [];
         $client['id'] = getGUID();
         $client['nom'] = $_POST['nom'];

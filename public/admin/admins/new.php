@@ -1,7 +1,6 @@
 <?php
     require_once ('../../../private/initialize.php');
-
-    if (is_post_request()){
+if (is_post_request()){
         $admin = [];
         $admin['id'] = getGUID();
         $admin['nom'] = $_POST['nom'];
@@ -14,7 +13,7 @@
         $result = insert_admin($admin);
         if ($result === true){
             $_SESSION['message'] = 'Admin créé.';
-            redirect_to(url_for('/client/admins/index.php'));
+            redirect_to(url_for('/admin/admins/index.php'));
         }else {
             $errors = $result;
         }

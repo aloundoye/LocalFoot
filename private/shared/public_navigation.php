@@ -12,12 +12,18 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
+                <?php if (!is_client_logged_in()){?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo url_for('/login.php');?>">Se connecter</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo url_for('/register.php');?>">S'inscrire</a>
                 </li>
+                <?php } else{ ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo url_for('/logout.php');?>">Se deconnecter</a>
+                </li>
+                <?php }?>
             </ul>
         </div>
     </div>

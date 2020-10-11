@@ -1,6 +1,7 @@
 <?php
     require_once('../../../private/initialize.php');
-    $client_set = find_all_clients();
+require_admin_login();
+$client_set = find_all_clients();
 ?>
 
 <?php $page_title = 'Clients' ?>

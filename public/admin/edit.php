@@ -1,5 +1,6 @@
 <?php
 require_once('../../private/initialize.php');
+require_admin_login();
 $page_title = 'Modifier Terrain';
 if (!isset($_GET['id'])){
     redirect_to(url_for('/admin/index.php'));
