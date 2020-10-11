@@ -33,9 +33,9 @@ CREATE TABLE Client
         nom VARCHAR(255) NOT NULL,
         prenom VARCHAR (255) NOT NULL,
         id VARCHAR (72) NOT NULL,
-        tel varchar(10),
+        tel varchar(255),
         email varchar(255) NOT NULL,
-        hashed_password VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
         PRIMARY KEY (id)
     );
 
@@ -45,9 +45,9 @@ CREATE TABLE Admin
         nom VARCHAR(255),
         prenom VARCHAR (255),
         id VARCHAR (72) NOT NULL ,
-        tel varchar(10),
+        tel varchar(255),
         email varchar(255) NOT NULL,
-        hashed_password VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
         PRIMARY KEY (id)
     );
 

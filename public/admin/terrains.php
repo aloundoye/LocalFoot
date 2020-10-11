@@ -12,7 +12,7 @@ $terrain_set = find_all_terrains();
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?php echo url_for('/admin/new.php') ?>" class="m-0 btn btn-info fa-pull-right"><i class="fas fa-plus"></i> Ajouter une nouvelle produit</a>
+            <a href="<?php echo url_for('/admin/new.php') ?>" class="m-0 btn btn-info fa-pull-right"><i class="fas fa-plus"></i> Ajouter un nouveau terrain</a>
             <h6 class="m-0 font-weight-bold text-primary">Détails Terrains</h6>
         </div>
         <div class="card-body">

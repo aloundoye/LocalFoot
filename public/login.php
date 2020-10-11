@@ -1,26 +1,46 @@
 <?php
 require_once ('../private/initialize.php');
 
-if (is_post_request()){
-    $username = isset($_POST['username']) ? $_POST['username'] : NULL;
-    $password = isset($_POST['password']) ? $_POST['password'] : NULL;
-//eviter les injections sql
-    $username = stripcslashes($username);
-    $password = stripcslashes($password);
+$errors = [];
+$email = '';
+$password = '';
 
-// connexion à la base
-    $con=mysqli_connect("localhost","root","","locafoot");
-    $req="select * from utilisateurs where username='$username' and password='$password'";
-    $result=mysqli_query($con,$req);
-    $ligne=mysqli_fetch_array($result);
-    if($ligne['username']== $username && $ligne['password']== $password){
-        echo "connexion reussie".$ligne['username'];
-    }
-    else{
-        echo"Echec de la connexion";
-    }
-}else{
+if(is_post_request()) {
 
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+// Validations
+    if (is_blank($email)) {
+        $errors[] = "Email cannot be blank.";
+    }
+    if (is_blank($password)) {
+        $errors[] = "Password cannot be blank.";
+    }
+
+// if there were no errors, try to login
+    if (empty($errors)) {
+        // Using one variable ensures that msg is the same
+        $login_failure_msg = "Log in was unsuccessful.";
+
+        $client = find_client_by_email($email);
+        if ($client) {
+
+            if (password_verify($password, $client['password'])) {
+                // password matches
+                log_in_client($client);
+                redirect_to(url_for('/index.php'));
+            } else {
+                // username found, but password does not match
+                $errors[] = $login_failure_msg;
+            }
+
+        } else {
+            // no username found
+            $errors[] = "Compte non trouve";
+        }
+
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -65,12 +85,14 @@ if (is_post_request()){
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Bon retour!</h1>
                                 </div>
-                                <form class="user">
+                                <?php echo display_errors($errors);?>
+
+                                <form class="user" action="login.php" method="post">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Entrer votre adresse email...">
+                                        <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Entrer votre adresse email...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Votre mot de passe">
+                                        <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Votre mot de passe">
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
@@ -78,9 +100,9 @@ if (is_post_request()){
                                             <label class="custom-control-label" for="customCheck">Se rappeler de moi</label>
                                         </div>
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Se connecter
-                                    </a>
+                                    </button>
                                 </form>
                                 <hr>
                                 <div class="text-center">

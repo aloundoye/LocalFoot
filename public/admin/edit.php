@@ -33,19 +33,19 @@ if (is_post_request()){
     <form action="" method="post">
         <div class="form-group">
             <label for="nom_terrain">Nom du terrain</label>
-            <input type="text" class="form-control form-control-sm" id="nom_terrain" name="nom_terrain" placeholder="Entrer le nom du terrain" value="<?php echo h($terrain['nom_terrain']);?>">
+            <input type="text" class="form-control form-control-sm col-xl-6" id="nom_terrain" name="nom_terrain" placeholder="Entrer le nom du terrain" value="<?php echo h($terrain['nom_terrain']);?>">
         </div>
         <div class="form-group">
             <label for="taille">Taille</label>
-            <input type="text" class="form-control form-control-sm" id="taille" name="taille" placeholder="Entrer la taille du terrain ex: 30x40" value="<?php echo h($terrain['taille']);?>">
+            <input type="text" class="form-control form-control-sm col-xl-6" id="taille" name="taille" placeholder="Entrer la taille du terrain ex: 30x40" value="<?php echo h($terrain['taille']);?>">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" class="form-control form-control-sm" id="description" cols="30" rows="10" placeholder="Entrer la description du terrain" ><?php echo h($terrain['description']);?></textarea>
+            <textarea name="description" class="form-control form-control-sm col-xl-6" id="description" cols="30" rows="10" placeholder="Entrer la description du terrain" ><?php echo h($terrain['description']);?></textarea>
         </div>
         <div class="form-group">
             <label for="prix">Prix</label>
-            <input type="text" class="form-control form-control-sm" id="prix" name="prix" placeholder="Entrer le prix pour une reservation du terrain" value="<?php echo h($terrain['prix']);?>">
+            <input type="text" class="form-control form-control-sm col-xl-6" id="prix" name="prix" placeholder="Entrer le prix pour une reservation du terrain" value="<?php echo h($terrain['prix']);?>">
         </div>
         <div class="form-group">
             <label for="photo">Photo du terrain</label>

@@ -23,7 +23,7 @@ if(!isset($page_title)) { $page_title = ''; }
 
 </head>
 
-<body>
+<body class="bg-gray-200">
 
 <?php include ('public_navigation.php');?>
 

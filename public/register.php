@@ -2,33 +2,30 @@
 require_once ('../private/initialize.php');
 
 if (is_post_request()){
-    session_start();
-//connexion à la base de données
-    $con = mysqli_connect("localhost","root","","locafoot");
+    $client = [];
+    $client['id'] = getGUID();
+    $client['nom'] = $_POST['nom'];
+    $client['prenom'] = $_POST['prenom'];
+    $client['tel'] = $_POST['tel'];
+    $client['email'] = $_POST['email'];
+    $client['password'] = $_POST['password'];
+    $client['confirm_password'] = $_POST['confirm_password'];
 
-    if (isset($_POST['register_btn']))
-    {
-        $nom =$_POST['nom'];
-        $prenom =$_POST['prenom'];
-        $mail = $_POST['mail'];
-        $username = $_POST['username'];
-        $password = $_POST['mdp'];
-        $password2 = $_POST['mdp2'];
-
-        if($password == $password2){
-            //création de compte avec succès
-            $password = md5($password);
-            $req="insert into utilisateurs(nom, prenom, mail, username, password) values ('$nom', '$prenom', '$mail','$username','$password')";
-            mysqli_query($con,$req);
-            $_SESSION['message'] = "compte cree avec succes";
-            $username = $_SESSION['username'];
-        }
-        else{
-            echo "Echec";
-        }
+    $result = insert_client($client);
+    if ($result === true){
+        $_SESSION['message'] = 'Votre compte est créé.';
+        redirect_to(url_for('/index.php'));
+    }else {
+        $errors = $result;
     }
-}else{
-
+} else{
+    $client = [];
+    $client['nom'] = '';
+    $client['prenom'] = '';
+    $client['tel'] = '';
+    $client['email'] = '';
+    $client['password'] = '';
+    $client['confirm_password'] = '';
 }
 ?>
 
@@ -69,29 +66,34 @@ if (is_post_request()){
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Creer un compte!</h1>
                         </div>
+                        <?php echo display_errors($errors);?>
                         <form class="user" action="register.php" method="post">
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Prénom">
+                                    <input type="text" value="<?php echo htmlspecialchars($client['prenom']);?>" class="form-control form-control-user" id="prenom" name="prenom" placeholder="Prénom">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Nom">
+                                    <input type="text" value="<?php echo htmlspecialchars($client['nom']);?>" class="form-control form-control-user" id="nom" name="nom" placeholder="Nom">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Adresse Email">
+                                <input type="tel" value="<?php echo htmlspecialchars($client['tel']);?>" name="tel" class="form-control form-control-user" id="tel" placeholder="Telephone">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" value="<?php echo htmlspecialchars($client['email']);?>" class="form-control form-control-user" id="email" name="email" placeholder="Adresse Email">
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
+                                    <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Mot de passe">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Répéter le mot de passe">
+                                    <input type="password" class="form-control form-control-user" id="confirm_password" name="confirm_password" placeholder="Répéter le mot de passe">
                                 </div>
                             </div>
-                            <a href="login.html" class="btn btn-primary btn-user btn-block">
+
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
                                 S'inscrire
-                            </a>
+                            </button>
                         </form>
                         <hr>
                         <div class="text-center">
@@ -109,14 +111,14 @@ if (is_post_request()){
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?php echo url_for('/admin/vendor/jquery/jquery.min.js');?>"></script>
-<script src="<?php echo url_for('/admin/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
+<script src="<?php echo url_for('/client/vendor/jquery/jquery.min.js');?>"></script>
+<script src="<?php echo url_for('/client/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="<?php echo url_for('/admin/vendor/jquery-easing/jquery.easing.min.js');?>"></script>
+<script src="<?php echo url_for('/client/vendor/jquery-easing/jquery.easing.min.js');?>"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="<?php echo url_for('/js/sb-admin-2.min.js');?>"></script>
+<script src="<?php echo url_for('/js/sb-client-2.min.js');?>"></script>
 
 </body>
 

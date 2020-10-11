@@ -61,7 +61,7 @@ function is_get_request(){
 function display_errors($errors=array()) {
     $output = '';
     if(!empty($errors)) {
-        $output .= "<div class=\"errors\">";
+        $output .= "<div class=\"errors text-danger\">";
         $output .= "Veillez corriger les erreurs suivantes:";
         $output .= "<ul>";
         foreach($errors as $error) {

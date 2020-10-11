@@ -23,6 +23,8 @@ if(!isset($page_title)) { $page_title = 'Admin Area'; }
     <!-- Custom styles for this template-->
     <link href="<?php echo url_for('/stylesheets/style_admin.css')?>" rel="stylesheet">
     <link href="<?php echo url_for('/stylesheets/sb-admin-2.min.css')?>" rel="stylesheet">
+    <link href="<?php echo url_for('/admin/vendor/datatables/dataTables.bootstrap4.min.css')?>" rel="stylesheet">
+
 
 </head>
 
@@ -282,4 +284,4 @@ if(!isset($page_title)) { $page_title = 'Admin Area'; }
                 </ul>
 
             </nav>
-        <div class="container-fluid">
+            <div class="container-fluid">

@@ -93,4 +93,18 @@
     return preg_match($email_regex, $value) === 1;
   }
 
+function has_unique_email($table, $email, $current_id="0") {
+  global $db;
+
+  $sql = "SELECT * FROM " . $table . " ";
+  $sql .= "WHERE email='" . mysqli_real_escape_string($db, $email) . "' ";
+  $sql .= "AND id != '" . mysqli_real_escape_string($db, $current_id) . "'";
+
+  $result = mysqli_query($db, $sql);
+  $admin_count = mysqli_num_rows($result);
+  mysqli_free_result($result);
+
+  return $admin_count === 0;
+}
+
 ?>
