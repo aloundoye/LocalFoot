@@ -56,13 +56,14 @@
         }
 
         $sql = "INSERT INTO terrain ";
-        $sql .= "(id, nom_terrain, taille, prix, description) ";
+        $sql .= "(id, nom_terrain, taille, prix, description, image) ";
         $sql .= "VALUES (";
         $sql .= "'" . mysqli_real_escape_string($db, $terrain['id']) . "',";
         $sql .= "'" . mysqli_real_escape_string($db, $terrain['nom_terrain']) . "',";
         $sql .= "'" . mysqli_real_escape_string($db, $terrain['taille']) . "',";
         $sql .= "'" . mysqli_real_escape_string($db, $terrain['prix']) . "',";
-        $sql .= "'" . mysqli_real_escape_string($db, $terrain['description']) . "'";
+        $sql .= "'" . mysqli_real_escape_string($db, $terrain['description']) . "',";
+        $sql .= "'" . mysqli_real_escape_string($db, $terrain['image_name']) . "'";
         $sql .= ")";
         $result = mysqli_query($db, $sql);
         if ($result){
@@ -106,13 +107,26 @@
         if (is_blank($terrain['description'])){
             $errors[] = "La description du terrain ne peut pas être vide.";
         }
+         if($terrain['check_image'] === false) {
+             $errors [] = "Le fichier n'est pas une image.";
+         }
+         if($terrain['file_exist']) {
+             $errors [] = "Le fichier existe deja.";
+         }
+         if($terrain['image_size'] > 5000000) {
+             $errors [] = "Votre fichier est trop lourd.";
+         }
+         if($terrain['image_type'] != "jpg" && $terrain['image_type'] != "jpeg" && $terrain['image_type'] != "png") {
+             $errors [] = "Désolé, seuls les fichiers JPG, JPEG et PNG sont autorisés
+.";
+         }
 
         return $errors;
      }
 
     function find_all_admins(){
         global $db;
-        $sql = "SELECT * FROM client";
+        $sql = "SELECT * FROM admin";
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         return $result;
@@ -120,7 +134,7 @@
 
 function find_admin_by_id($id){
     global $db;
-    $sql = "SELECT * FROM client ";
+    $sql = "SELECT * FROM admin ";
     $sql .= "WHERE id='" . mysqli_real_escape_string($db, $id) . "'";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);

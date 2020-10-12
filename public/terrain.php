@@ -8,13 +8,12 @@ $terrain = find_terrain_by_id($id);
 <div class="col-lg-9">
 
     <div class="card mt-4">
-        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+        <img class="card-img-top img-fluid" src="<?php echo url_for('/admin/images/') . $terrain['image'];?>" alt="">
         <div class="card-body">
             <h3 class="card-title"><?php echo htmlspecialchars($terrain['nom_terrain']);?></h3>
             <h4><?php echo htmlspecialchars($terrain['prix']);?> FCFA</h4>
             <p class="card-text"><?php echo htmlspecialchars($terrain['description']);?></p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+            <a href="<?php echo url_for('/reservation/index.php?id_terrain=' . $terrain['id'])?>" class="btn btn-outline-primary">Reserver</a>
         </div>
     </div>
 

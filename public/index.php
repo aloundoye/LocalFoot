@@ -39,7 +39,7 @@
     <?php while ($terrain = mysqli_fetch_assoc($terrain_set)){?>
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="<?php echo url_for('/terrain.php?id=' . $terrain['id'])?>"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="<?php echo url_for('/terrain.php?id=' . $terrain['id'])?>"><img class="card-img-top" src="<?php echo url_for('/admin/images/') . $terrain['image'];?>" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
                         <a href="<?php echo url_for('/terrain.php?id=' . $terrain['id'])?>"><?php echo $terrain['nom_terrain'];?></a>
@@ -69,5 +69,7 @@
 
 </div>
 <!-- /.container -->
+<?php
 
+?>
 <?php include(SHARED_PATH . '/public_footer.php');

@@ -75,9 +75,9 @@
 
   // Call require_login() at the top of any page which needs to
   // require a valid login before granting acccess to the page.
-  function require_client_login() {
+  function require_client_login($id_terrain) {
     if(!is_client_logged_in()) {
-      redirect_to(url_for('/login.php'));
+      redirect_to(url_for('/login.php?idterrain=') . $id_terrain);
     } else {
       // Do nothing, let the rest of the page proceed
     }

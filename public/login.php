@@ -1,6 +1,5 @@
 <?php
 require_once ('../private/initialize.php');
-
 $errors = [];
 $email = '';
 $password = '';
@@ -28,8 +27,16 @@ if(is_post_request()) {
 
             if (password_verify($password, $client['password'])) {
                 // password matches
-                log_in_client($client);
-                redirect_to(url_for('/index.php'));
+                if (log_in_client($client)){
+                    if (isset($_SESSION['id_terrain_reserv'])){
+                        redirect_to(url_for('/terrain.php?id=') . $_SESSION['id_terrain_reserv']);
+                    }
+                    else{
+                        redirect_to(url_for('/index.php'));
+                    }
+                }
+
+
             } else {
                 // username found, but password does not match
                 $errors[] = $login_failure_msg;
@@ -41,6 +48,8 @@ if(is_post_request()) {
         }
 
     }
+}else{
+    $_SESSION['id_terrain_reserv'] = $_GET['idterrain'] ?? null;
 }
 ?>
 <!DOCTYPE html>

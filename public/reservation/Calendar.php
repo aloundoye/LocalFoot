@@ -109,7 +109,7 @@ class Calendar
             }
         }
         $content .= '</ul>';
-        $content .= '<div class="clear"></div>';
+        $content .= '<div class="clear"><a style="background-color: #e7e7e7; color: black; border-radius: 4px; text-decoration: none;" href="confirm.php">Confirmer</a></div>';
         $content .= '</div>';
         $content .= '</div>';
         return $content;

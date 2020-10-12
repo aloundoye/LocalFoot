@@ -10,6 +10,7 @@ CREATE TABLE Terrain
         occupe TINYINT(1),
         prix varchar(15),
         nom_terrain VARCHAR (255),
+        image VARCHAR (255),
         description text,
         PRIMARY KEY(id)
     );
@@ -50,6 +51,23 @@ CREATE TABLE Admin
         password VARCHAR(255) NOT NULL,
         PRIMARY KEY (id)
     );
+DROP TABLE IF EXISTS bookings;
+CREATE TABLE bookings
+    (
+        id int auto_increment ,
+        booking_date DATE,
+        booking_time TIME,
+        id_client VARCHAR(72),
+        id_terrain VARCHAR(72),
+        PRIMARY KEY (id),
+        FOREIGN KEY (id_client) REFERENCES Client(id),
+        FOREIGN KEY (id_terrain) REFERENCES Terrain(id)
 
+    );
 
--- insert into Admin (id,) values(uuid(), 'Andromeda');
+/*
+**Compte admin par defaut:
+**email :admin@admin.com
+**mdp: Admin1234
+*/
+INSERT INTO `admin`(`nom`, `prenom`, `id`, `tel`, `email`, `password`) VALUES ('admin','admin',UUID(),'+221771302336','admin@admin.com','$2y$10$uq6LpTpngvoQo0wz5.svwe5iJAJbbUgCxtWQEutEb92QQD/yoHjOC')

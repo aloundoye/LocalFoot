@@ -174,3 +174,7 @@ div.booked {
     position:relative;
     top:1px;
 }
+.btn {
+    color: #FFFFFF;
+    background-color: #8FBC8F
+}

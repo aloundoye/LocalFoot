@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Accueil
+                    <a class="nav-link" href="<?php echo url_for('/index.php');?>">Accueil
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>

@@ -1,5 +1,5 @@
 <?php
-
+require_once ('../../private/initialize.php');
 class Booking
 {
 
@@ -37,8 +37,12 @@ class Booking
 
     public function add(DateTimeImmutable $bookingDate)
     {
+        $time = date('G:i');
+        $time = ''.rand(8,20).':00';
+        $id_client = $_SESSION['client_id'];
+        $id_terrain = $_SESSION['id_terrain_reserv'];
         $statement = $this->dbh->prepare(
-            'INSERT INTO ' . $this->bookingsTableName . ' (booking_date) VALUES (:bookingDate)'
+            'INSERT INTO ' . $this->bookingsTableName . ' (booking_date,booking_time,id_client,id_terrain) VALUES (:bookingDate,:time,:id_client,:id_terrain)'
         );
 
         if (false === $statement) {
@@ -47,6 +51,9 @@ class Booking
 
         if (false === $statement->execute([
                 ':bookingDate' => $bookingDate->format('Y-m-d'),
+                ':time' => $time,
+                ':id_client' => $id_client,
+                ':id_terrain' => $id_terrain,
             ])) {
             throw new Exception(implode(' ', $statement->errorInfo()));
         }

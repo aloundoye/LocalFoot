@@ -14,7 +14,10 @@ if (is_post_request()){
     $result = insert_client($client);
     if ($result === true){
         $_SESSION['message'] = 'Votre compte est créé.';
+        if (log_in_client($client)){
+
         redirect_to(url_for('/index.php'));
+        }
     }else {
         $errors = $result;
     }
